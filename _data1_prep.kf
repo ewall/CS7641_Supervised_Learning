@@ -64,7 +64,7 @@
 					"class" : "weka.core.converters.ArffSaver",
 					"filePath" : "",
 					"dir" : "/Users/ewall/Dev/Python/ml/P1 Supervised Learning/data",
-					"prefix" : "creditcards.arff",
+					"prefix" : "creditcards_std.arff",
 					"useRelativePath" : true,
 					"options" : "-decimal 6"
 				}
