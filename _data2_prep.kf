@@ -13,10 +13,10 @@
 			},
 			"connections" : {
 				"dataSet" : [
-					"ArffSaver"
+					"SpreadSubsample"
 				]
 			},
-			"coordinates" : "318,23"
+			"coordinates" : "178,25"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.Saver",
@@ -35,7 +35,7 @@
 			},
 			"connections" : {
 			},
-			"coordinates" : "452,22"
+			"coordinates" : "575,25"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.Filter",
@@ -49,10 +49,10 @@
 			},
 			"connections" : {
 				"dataSet" : [
-					"ClassAssigner"
+					"ArffSaver"
 				]
 			},
-			"coordinates" : "181,23"
+			"coordinates" : "450,25"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.Loader",
@@ -67,10 +67,27 @@
 			},
 			"connections" : {
 				"dataSet" : [
-					"Standardize"
+					"ClassAssigner"
 				]
 			},
 			"coordinates" : "39,24"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.supervised.instance.SpreadSubsample",
+					"options" : "-M 1.0 -X 0.0 -S 1"
+				},
+				"name" : "SpreadSubsample"
+			},
+			"connections" : {
+				"dataSet" : [
+					"Standardize"
+				]
+			},
+			"coordinates" : "318,24"
 		}
 	]
 }

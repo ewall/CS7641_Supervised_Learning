@@ -112,7 +112,7 @@
 				"classifier" : {
 					"type" : "optionHandler",
 					"class" : "weka.classifiers.trees.J48",
-					"options" : "-C 0.26 -M 5"
+					"options" : "-C 0.06 -M 5"
 				},
 				"loadClassifierFileName" : "",
 				"name" : "J48",
