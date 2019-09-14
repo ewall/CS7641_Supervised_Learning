@@ -1,5 +1,7 @@
-# data not included
+# data and results not included
 data/
+output/
+experiments/
 
 # OS files
 .DS_Store
