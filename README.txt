@@ -24,6 +24,14 @@ Eric W. Wallace, ewallace8-at-gatech-dot-edu, GTID #
    d. Launch Weka to the KnowledgeFlow GUI
       1. Open the file "_data1_prep.kf".
       2. On the "Run" tab, press the "Start" button and wait for it to complete.
+      * If there's an error finding the file, you may need to edit the "ArffLoader" component to browse for the source data file due to Weka's inconsistent handling of relative file paths.
    e. Confirm that it has created a file named "creditcards.arff" in the "data" directory.
 4. Prepare the second data set:
-   a. ...
+   a. Download the file "default of credit card clients.xls" from the UCI Machine Learning Repository at http://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients
+   b. Save into the "data" folder in the Comma-Separated Values (CSV) format with the filename "creditcards.csv".
+   c. Launch Weka to the KnowledgeFlow GUI
+      1. Open the file "_data2_prep.kf".
+      2. On the "Run" tab, press the "Start" button and wait for it to complete.
+      * If there's an error finding the file, you may need to edit the "ArffLoader" component to browse for the source data file due to Weka's inconsistent handling of relative file paths.
+   e. Confirm that it has created a file named "htru_std.arff" in the "data" directory.
+5. ...
