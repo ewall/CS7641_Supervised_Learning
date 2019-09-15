@@ -1,0 +1,682 @@
+{
+	"flow_name" : "data1_dt_curve1",
+	"steps" : [
+		{
+			"class" : "weka.knowledgeflow.steps.Loader",
+			"properties" : {
+				"loader" : {
+					"type" : "loader",
+					"class" : "weka.core.converters.ArffLoader",
+					"filePath" : "_current_project_/data/creditcards_std.arff",
+					"useRelativePath" : true
+				},
+				"name" : "ArffLoader"
+			},
+			"connections" : {
+				"dataSet" : [
+					"ClassAssigner"
+				]
+			},
+			"coordinates" : "43,445"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassAssigner",
+			"properties" : {
+				"classColumn" : "Y_binarized",
+				"name" : "ClassAssigner"
+			},
+			"connections" : {
+				"dataSet" : [
+					"TrainTestSplitMaker"
+				]
+			},
+			"coordinates" : "185,446"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Saver",
+			"properties" : {
+				"name" : "ArffSaver",
+				"relationNameForFilename" : false,
+				"saver" : {
+					"type" : "saver",
+					"class" : "weka.core.converters.ArffSaver",
+					"filePath" : "",
+					"dir" : "/Users/ewall/_current_project_/data",
+					"prefix" : "creditcards_test.arff",
+					"useRelativePath" : false,
+					"options" : "-decimal 6"
+				}
+			},
+			"connections" : {
+			},
+			"coordinates" : "310,587"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TrainTestSplitMaker",
+			"properties" : {
+				"name" : "TrainTestSplitMaker",
+				"preserveOrder" : false,
+				"seed" : "1",
+				"trainPercent" : "66"
+			},
+			"connections" : {
+				"testSet" : [
+					"ArffSaver",
+					"FilteredClassifier90",
+					"FilteredClassifier80",
+					"FilteredClassifier70",
+					"FilteredClassifier60",
+					"FilteredClassifier50",
+					"FilteredClassifier40",
+					"FilteredClassifier30",
+					"FilteredClassifier10",
+					"FilteredClassifier20",
+					"FilteredClassifier100"
+				],
+				"trainingSet" : [
+					"FilteredClassifier90",
+					"FilteredClassifier80",
+					"FilteredClassifier70",
+					"FilteredClassifier60",
+					"FilteredClassifier50",
+					"FilteredClassifier40",
+					"FilteredClassifier30",
+					"FilteredClassifier20",
+					"FilteredClassifier10",
+					"FilteredClassifier100"
+				]
+			},
+			"coordinates" : "310,446"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 70.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier70",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver70",
+					"ClassifierPerformanceEvaluator3"
+				]
+			},
+			"coordinates" : "509,238"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 90.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier90",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver90",
+					"ClassifierPerformanceEvaluator"
+				]
+			},
+			"coordinates" : "509,29"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 80.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier80",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver80",
+					"ClassifierPerformanceEvaluator2"
+				]
+			},
+			"coordinates" : "508,131"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 60.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier60",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver60",
+					"ClassifierPerformanceEvaluator4"
+				]
+			},
+			"coordinates" : "510,342"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 50.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier50",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver50",
+					"ClassifierPerformanceEvaluator5"
+				]
+			},
+			"coordinates" : "509,445"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_90",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver90",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "641,67"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_80",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver80",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "643,169"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_70",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver70",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "644,276"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_60",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver60",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "645,380"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_50",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver50",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "645,483"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 40.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier40",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver40",
+					"ClassifierPerformanceEvaluator6"
+				]
+			},
+			"coordinates" : "511,543"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_40",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver40",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "646,582"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 30.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier30",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver30",
+					"ClassifierPerformanceEvaluator7"
+				]
+			},
+			"coordinates" : "512,648"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_30",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver30",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "648,686"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 20.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier20",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver20",
+					"ClassifierPerformanceEvaluator8"
+				]
+			},
+			"coordinates" : "512,754"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_20",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver20",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "647,792"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.unsupervised.instance.RemovePercentage -P 10.0\" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier10",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"SerializedModelSaver10",
+					"ClassifierPerformanceEvaluator9"
+				]
+			},
+			"coordinates" : "513,858"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_10",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver10",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "648,896"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer"
+				]
+			},
+			"coordinates" : "750,29"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer"
+			},
+			"connections" : {
+			},
+			"coordinates" : "872,29"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator2"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer2"
+				]
+			},
+			"coordinates" : "749,132"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer2"
+			},
+			"connections" : {
+			},
+			"coordinates" : "871,132"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator3"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer3"
+				]
+			},
+			"coordinates" : "748,239"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer3"
+			},
+			"connections" : {
+			},
+			"coordinates" : "870,239"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator4"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer4"
+				]
+			},
+			"coordinates" : "749,341"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer4"
+			},
+			"connections" : {
+			},
+			"coordinates" : "871,341"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator5"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer5"
+				]
+			},
+			"coordinates" : "748,446"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer5"
+			},
+			"connections" : {
+			},
+			"coordinates" : "870,446"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator6"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer6"
+				]
+			},
+			"coordinates" : "747,546"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer6"
+			},
+			"connections" : {
+			},
+			"coordinates" : "869,546"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator7"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer7"
+				]
+			},
+			"coordinates" : "748,649"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer7"
+			},
+			"connections" : {
+			},
+			"coordinates" : "870,649"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator8"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer8"
+				]
+			},
+			"coordinates" : "749,754"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer8"
+			},
+			"connections" : {
+			},
+			"coordinates" : "871,754"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator9"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer9"
+				]
+			},
+			"coordinates" : "747,858"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer9"
+			},
+			"connections" : {
+			},
+			"coordinates" : "869,858"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
+			"properties" : {
+				"filenamePrefix" : "dt_curve_100",
+				"includeRelationNameInFilename" : false,
+				"incrementalSaveSchedule" : 0,
+				"name" : "SerializedModelSaver100",
+				"outputDirectory" : "/Users/ewall/_current_project_/models"
+			},
+			"connections" : {
+			},
+			"coordinates" : "650,1001"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
+			"properties" : {
+				"costMatrixString" : "",
+				"errorPlotPointSizeProportionalToMargin" : false,
+				"evaluateWithRespectToCosts" : false,
+				"evaluationMetricsToOutput" : "Incorrect,Kappa,MAE,Precision,Recall,F-measure,ROC area,PRC area",
+				"name" : "ClassifierPerformanceEvaluator10"
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer10"
+				]
+			},
+			"coordinates" : "749,963"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer10"
+			},
+			"connections" : {
+			},
+			"coordinates" : "871,963"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.meta.FilteredClassifier",
+					"options" : "-F \"weka.filters.AllFilter \" -S 1 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+				},
+				"loadClassifierFileName" : "",
+				"name" : "FilteredClassifier100",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"batchClassifier" : [
+					"ClassifierPerformanceEvaluator10",
+					"SerializedModelSaver100"
+				]
+			},
+			"coordinates" : "511,964"
+		}
+	]
+}
