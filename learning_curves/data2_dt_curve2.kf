@@ -1,5 +1,5 @@
 {
-	"flow_name" : "data1_dt_curve2",
+	"flow_name" : "data2_dt_curve2",
 	"steps" : [
 		{
 			"class" : "weka.knowledgeflow.steps.Loader",
@@ -7,7 +7,7 @@
 				"loader" : {
 					"type" : "loader",
 					"class" : "weka.core.converters.ArffLoader",
-					"filePath" : "_current_project_/data/creditcards_train.arff",
+					"filePath" : "_current_project_/data/htru_train.arff",
 					"useRelativePath" : true
 				},
 				"name" : "ArffLoader"
@@ -22,7 +22,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.ClassAssigner",
 			"properties" : {
-				"classColumn" : "Y_binarized",
+				"classColumn" : "class",
 				"name" : "ClassAssigner"
 			},
 			"connections" : {
