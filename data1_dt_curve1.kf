@@ -33,25 +33,6 @@
 			"coordinates" : "185,446"
 		},
 		{
-			"class" : "weka.knowledgeflow.steps.Saver",
-			"properties" : {
-				"name" : "ArffSaver",
-				"relationNameForFilename" : false,
-				"saver" : {
-					"type" : "saver",
-					"class" : "weka.core.converters.ArffSaver",
-					"filePath" : "",
-					"dir" : "/Users/ewall/_current_project_/data",
-					"prefix" : "creditcards_test.arff",
-					"useRelativePath" : false,
-					"options" : "-decimal 6"
-				}
-			},
-			"connections" : {
-			},
-			"coordinates" : "310,587"
-		},
-		{
 			"class" : "weka.knowledgeflow.steps.TrainTestSplitMaker",
 			"properties" : {
 				"name" : "TrainTestSplitMaker",
@@ -61,7 +42,7 @@
 			},
 			"connections" : {
 				"testSet" : [
-					"ArffSaver",
+					"ArffSaver - Test",
 					"FilteredClassifier90",
 					"FilteredClassifier80",
 					"FilteredClassifier70",
@@ -83,7 +64,8 @@
 					"FilteredClassifier30",
 					"FilteredClassifier20",
 					"FilteredClassifier10",
-					"FilteredClassifier100"
+					"FilteredClassifier100",
+					"ArffSaver - Train"
 				]
 			},
 			"coordinates" : "310,446"
@@ -196,7 +178,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_90",
+				"filenamePrefix" : "curve_10p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver90",
@@ -209,7 +191,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_80",
+				"filenamePrefix" : "curve_20p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver80",
@@ -222,7 +204,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_70",
+				"filenamePrefix" : "curve_30p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver70",
@@ -235,7 +217,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_60",
+				"filenamePrefix" : "curve_40p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver60",
@@ -248,7 +230,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_50",
+				"filenamePrefix" : "curve_50p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver50",
@@ -282,7 +264,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_40",
+				"filenamePrefix" : "curve_60p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver40",
@@ -316,7 +298,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_30",
+				"filenamePrefix" : "curve_70p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver30",
@@ -350,7 +332,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_20",
+				"filenamePrefix" : "curve_80p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver20",
@@ -384,7 +366,7 @@
 		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_10",
+				"filenamePrefix" : "curve_90p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver10",
@@ -405,19 +387,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer"
+					"TextSaver"
 				]
 			},
 			"coordinates" : "750,29"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer"
-			},
-			"connections" : {
-			},
-			"coordinates" : "872,29"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
@@ -430,19 +403,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer2"
+					"TextSaver2"
 				]
 			},
 			"coordinates" : "749,132"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer2"
-			},
-			"connections" : {
-			},
-			"coordinates" : "871,132"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
@@ -455,19 +419,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer3"
+					"TextSaver3"
 				]
 			},
 			"coordinates" : "748,239"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer3"
-			},
-			"connections" : {
-			},
-			"coordinates" : "870,239"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
@@ -480,19 +435,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer4"
+					"TextSaver4"
 				]
 			},
 			"coordinates" : "749,341"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer4"
-			},
-			"connections" : {
-			},
-			"coordinates" : "871,341"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
@@ -505,19 +451,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer5"
+					"TextSaver5"
 				]
 			},
 			"coordinates" : "748,446"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer5"
-			},
-			"connections" : {
-			},
-			"coordinates" : "870,446"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
@@ -530,19 +467,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer6"
+					"TextSaver6"
 				]
 			},
 			"coordinates" : "747,546"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer6"
-			},
-			"connections" : {
-			},
-			"coordinates" : "869,546"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
@@ -555,19 +483,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer7"
+					"TextSaver7"
 				]
 			},
 			"coordinates" : "748,649"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer7"
-			},
-			"connections" : {
-			},
-			"coordinates" : "870,649"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
@@ -580,19 +499,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer8"
+					"TextSaver8"
 				]
 			},
 			"coordinates" : "749,754"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer8"
-			},
-			"connections" : {
-			},
-			"coordinates" : "871,754"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.ClassifierPerformanceEvaluator",
@@ -605,24 +515,15 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer9"
+					"TextSaver9"
 				]
 			},
 			"coordinates" : "747,858"
 		},
 		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer9"
-			},
-			"connections" : {
-			},
-			"coordinates" : "869,858"
-		},
-		{
 			"class" : "weka.knowledgeflow.steps.SerializedModelSaver",
 			"properties" : {
-				"filenamePrefix" : "dt_curve_100",
+				"filenamePrefix" : "curve_100p",
 				"includeRelationNameInFilename" : false,
 				"incrementalSaveSchedule" : 0,
 				"name" : "SerializedModelSaver100",
@@ -643,19 +544,10 @@
 			},
 			"connections" : {
 				"text" : [
-					"TextViewer10"
+					"TextSaver10"
 				]
 			},
 			"coordinates" : "749,963"
-		},
-		{
-			"class" : "weka.knowledgeflow.steps.TextViewer",
-			"properties" : {
-				"name" : "TextViewer10"
-			},
-			"connections" : {
-			},
-			"coordinates" : "871,963"
 		},
 		{
 			"class" : "weka.knowledgeflow.steps.Classifier",
@@ -677,6 +569,164 @@
 				]
 			},
 			"coordinates" : "511,964"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_10p.txt",
+				"name" : "TextSaver",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "857,30"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_20p.txt",
+				"name" : "TextSaver2",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "858,131"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_30p.txt",
+				"name" : "TextSaver3",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "858,239"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_40p.txt",
+				"name" : "TextSaver4",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "859,341"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_50p.txt",
+				"name" : "TextSaver5",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "857,445"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_60p.txt",
+				"name" : "TextSaver6",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "857,547"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_70p.txt",
+				"name" : "TextSaver7",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "855,650"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_80p.txt",
+				"name" : "TextSaver8",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "857,754"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_90p.txt",
+				"name" : "TextSaver9",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "859,858"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextSaver",
+			"properties" : {
+				"append" : false,
+				"file" : "/Users/ewall/_current_project_/models/curve_test_100p.txt",
+				"name" : "TextSaver10",
+				"writeTitleString" : false
+			},
+			"connections" : {
+			},
+			"coordinates" : "858,963"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Saver",
+			"properties" : {
+				"name" : "ArffSaver - Test",
+				"relationNameForFilename" : false,
+				"saver" : {
+					"type" : "saver",
+					"class" : "weka.core.converters.ArffSaver",
+					"filePath" : "",
+					"dir" : "/Users/ewall/_current_project_/data",
+					"prefix" : "creditcards_test.arff",
+					"useRelativePath" : false,
+					"options" : "-decimal 6"
+				}
+			},
+			"connections" : {
+			},
+			"coordinates" : "311,679"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Saver",
+			"properties" : {
+				"name" : "ArffSaver - Train",
+				"relationNameForFilename" : false,
+				"saver" : {
+					"type" : "saver",
+					"class" : "weka.core.converters.ArffSaver",
+					"filePath" : "",
+					"dir" : "/Users/ewall/_current_project_/data",
+					"prefix" : "creditcards_train.arff",
+					"useRelativePath" : false,
+					"options" : "-decimal 6"
+				}
+			},
+			"connections" : {
+			},
+			"coordinates" : "312,230"
 		}
 	]
 }
