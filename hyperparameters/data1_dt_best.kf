@@ -82,7 +82,7 @@
 				"loader" : {
 					"type" : "loader",
 					"class" : "weka.core.converters.ArffLoader",
-					"filePath" : "Dev/Python/ml/P1 Supervised Learning/data/creditcards.arff",
+					"filePath" : "Dev/Python/ml/P1 Supervised Learning/data/creditcards_std.arff",
 					"useRelativePath" : true
 				},
 				"name" : "ArffLoader"
