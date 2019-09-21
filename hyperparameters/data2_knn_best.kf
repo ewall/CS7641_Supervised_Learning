@@ -112,7 +112,7 @@
 				"classifier" : {
 					"type" : "optionHandler",
 					"class" : "weka.classifiers.lazy.IBk",
-					"options" : "-K 8 -W 0 -I -A \"weka.core.neighboursearch.LinearNNSearch -A \\\"weka.core.ManhattanDistance -R first-last\\\"\""
+					"options" : "-K 10 -W 0 -I -A \"weka.core.neighboursearch.LinearNNSearch -A \\\"weka.core.ManhattanDistance -R first-last\\\"\""
 				},
 				"loadClassifierFileName" : "",
 				"name" : "IBk",
