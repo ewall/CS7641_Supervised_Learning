@@ -112,7 +112,7 @@
 				"classifier" : {
 					"type" : "optionHandler",
 					"class" : "weka.classifiers.lazy.IBk",
-					"options" : "-K 40 -W 0 -A \"weka.core.neighboursearch.CoverTree -A \\\"weka.core.EuclideanDistance -R first-last\\\" -B 1.3\""
+					"options" : "-K 40 -W 0 -I -A \"weka.core.neighboursearch.CoverTree -A \\\"weka.core.EuclideanDistance -R first-last\\\" -B 1.3\""
 				},
 				"loadClassifierFileName" : "",
 				"name" : "IBk",
