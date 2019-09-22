@@ -23,7 +23,7 @@ The following uses the Waikato Environment for Knowledge Analysis, otherwise kno
    d. Launch Weka to the KnowledgeFlow GUI
       1. Open the file "_data1_prep.kf".
       2. On the "Run" tab, press the "Start" button and wait for it to complete.
-      * If there's an error finding the file, you may need to edit the "ArffLoader" component to browse for the source data file due to Weka's inconsistent handling of relative file paths.
+      3. If there's an error finding the file, you may need to edit the "ArffLoader" component to browse for the source data file (due to Weka's inconsistent handling of relative file paths).
    e. Confirm that it has created a file named "creditcards.arff" in the "data" directory.
 4. Prepare the second data set:
    a. Download the file "default of credit card clients.xls" from the UCI Machine Learning Repository at http://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients
@@ -31,19 +31,22 @@ The following uses the Waikato Environment for Knowledge Analysis, otherwise kno
    c. Launch Weka to the KnowledgeFlow GUI
       1. Open the file "_data2_prep.kf".
       2. On the "Run" tab, press the "Start" button and wait for it to complete.
-      * If there's an error finding the file, you may need to edit the "ArffLoader" component to browse for the source data file due to Weka's inconsistent handling of relative file paths.
-   e. Confirm that it has created a file named "htru_std.arff" in the "data" directory.
+      3. If there's an error finding the file, you may need to edit the "ArffLoader" component to browse for the source data file (due to Weka's inconsistent handling of relative file paths).
+   d. Confirm that it has created a file named "htru_std.arff" in the "data" directory.
 5. To run the learning curve experiments:
-   a. First, a disclaimer: due to limitations in the Weka workbench, comparing a trained model against the training dataset is stupidly complex, so this is an ugly workaround...
-   b. Launch the Weka KnowledgeFlow program and open the appropriate *.kf files in the "learning_curves" directory. Naming convention is dataset first, then algorithm, then "curve1" or "curve2" as discussed in the next step.
-   c. The first KnowledgeFlow script (e.g. "data1_ann_curve1.kf") trains the learner and saves each model into the "models" directory, as well as outputs the results for validation against the test data into the same directory. (Note that they all use the same filenames, overwriting any previous executions.)
-   d. The second KnowledgeFlow script (e.g. "data1_ann_curve2.kf") loads the models from the first run, compares results against the training data, and outputs the training results into the "models" directory.
-   e. Plots used in my analysis are generated in Microsoft Excel from the output provided by the Weka tool.
+   a. First, a disclaimer: due to limitations in the Weka workbench, comparing a trained model against the training dataset is unnecessarily complex, so this is an ugly workaround...
+   b. Launch the Weka KnowledgeFlow program and change the "Experiment Configuration Mode" to "Advanced".
+   c. Open the appropriate *.kf files in the "learning_curves" directory. Naming convention is dataset first, then algorithm, then "curve1" or "curve2" as discussed in the next step.
+   d. If there's an error finding the file, you may need to edit the "ArffLoader" component to browse for the source data file (due to Weka's inconsistent handling of relative file paths).
+   e. The first KnowledgeFlow script (e.g. "data1_ann_curve1.kf") trains the learner and saves each model into the "models" directory, as well as outputs the results for validation against the test data into the same directory. (Note that they all use the same filenames, overwriting any previous executions.)
+   f. The second KnowledgeFlow script (e.g. "data1_ann_curve2.kf") loads the models from the first run, compares results against the training data, and outputs the training results into the "models" directory.
+   g. Plots used in my analysis are generated in Microsoft Excel from the output provided by the Weka tool.
 6. To run the experiments for hyperparameter tuning and complexity analysis:
    a. Launch the Weka Experimenter program and open the appropriate *.exp files in the "hyperparameters" directory. Naming convention is dataset first, then algorithm, then hyperparameter name.
-   b. Caution, many of these require hours to execute to completion, since they compare numerous options using cross-validation!
-   c. Plots used in my analysis are generated in Microsoft Excel from the output provided by the Weka tool.
+   b. If there's an error finding the data file, you may need to remove and re-add the source data file (due to Weka's inconsistent handling of relative file paths).
+   c. Caution, many of these require hours to execute to completion, since they compare numerous options using cross-validation!
+   d. Plots used in my analysis are generated in Microsoft Excel from the output provided by the Weka tool.
 7. To compute the "best" results for each algorithm:
    a. Launch the Weka KnowledgeFlow program and open the appropriate *.kf files in the "hyperparameters" directory. Naming convention is dataset first, then algorithm, then "best".
-   b. Note that, even though Weka stores the random seed in the script for consistency across re-runs, running this on a different operating system or hardware than I used may produce slightly different results due to differing pseudo-random number generation.
-
+   b. If there's an error finding the file, you may need to edit the "ArffLoader" component to browse for the source data file (due to Weka's inconsistent handling of relative file paths).
+   c. Note that, even though Weka stores the random seed in the script for consistency across re-runs, running this on a different operating system or hardware than I used may produce slightly different results due to differing pseudo-random number generation.
