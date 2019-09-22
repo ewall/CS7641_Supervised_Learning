@@ -103,7 +103,7 @@
 				"classifier" : {
 					"type" : "optionHandler",
 					"class" : "weka.classifiers.functions.MultilayerPerceptron",
-					"options" : "-L 0.05 -M 0.1 -N 500 -V 10 -S 0 -E 20 -H a -B -C -I"
+					"options" : "-L 0.25 -M 0.1 -N 500 -V 10 -S 0 -E 20 -H 0 -B -C -I"
 				},
 				"loadClassifierFileName" : "",
 				"name" : "MultilayerPerceptron",
@@ -127,7 +127,7 @@
 			},
 			"connections" : {
 			},
-			"coordinates" : "596,158"
+			"coordinates" : "600,165"
 		}
 	]
 }
