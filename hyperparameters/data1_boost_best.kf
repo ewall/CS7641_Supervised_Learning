@@ -112,7 +112,7 @@
 				"classifier" : {
 					"type" : "optionHandler",
 					"class" : "weka.classifiers.meta.AdaBoostM1",
-					"options" : "-Q -P 100 -S 1 -I 20 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2"
+					"options" : "-Q -P 100 -S 1 -I 40 -W weka.classifiers.trees.J48 -- -C 0.04 -M 0"
 				},
 				"loadClassifierFileName" : "",
 				"name" : "AdaBoostM1",
